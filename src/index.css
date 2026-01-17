@@ -1,0 +1,420 @@
+/**
+ * AstroWound-MEASURE Global Styles
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --astro-50: #f0f9ff;
+  --astro-100: #e0f2fe;
+  --astro-200: #bae6fd;
+  --astro-300: #7dd3fc;
+  --astro-400: #38bdf8;
+  --astro-500: #0ea5e9;
+  --astro-600: #0284c7;
+  --astro-700: #0369a1;
+  --astro-800: #075985;
+  --astro-900: #0c4a6e;
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    @apply antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+      Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 
+      sans-serif;
+  }
+
+  /* Remove outline on focused elements */
+  *:focus {
+    @apply outline-none;
+  }
+
+  /* Better focus states */
+  *:focus-visible {
+    @apply ring-2 ring-astro-500 ring-offset-2;
+  }
+
+  /* Disable text selection on UI elements */
+  button, 
+  [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Primary Button */
+  .btn-primary {
+    @apply bg-astro-500 text-white px-4 py-2 rounded-lg font-medium
+           hover:bg-astro-600 active:bg-astro-700 
+           transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium
+           hover:bg-gray-200 active:bg-gray-300
+           transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    @apply border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium
+           hover:bg-gray-50 active:bg-gray-100
+           transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Danger Button */
+  .btn-danger {
+    @apply bg-red-500 text-white px-4 py-2 rounded-lg font-medium
+           hover:bg-red-600 active:bg-red-700
+           transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Input Field */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg
+           focus:ring-2 focus:ring-astro-500 focus:border-transparent
+           placeholder-gray-400 transition-all duration-150;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-4;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .badge-info {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  /* Measurement Display */
+  .measurement-value {
+    @apply text-3xl font-bold text-gray-900;
+  }
+
+  .measurement-unit {
+    @apply text-lg text-gray-500 ml-1;
+  }
+
+  .measurement-label {
+    @apply text-sm text-gray-500 uppercase tracking-wide;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Safe area padding for mobile */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* Gradient backgrounds */
+  .gradient-astro {
+    @apply bg-gradient-to-br from-astro-500 to-astro-700;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Camera Module Styles */
+.camera-viewfinder {
+  @apply relative overflow-hidden bg-black;
+}
+
+.camera-overlay {
+  @apply absolute inset-0 pointer-events-none;
+}
+
+.camera-guides {
+  background: 
+    linear-gradient(to right, rgba(255,255,255,0.3) 1px, transparent 1px) 0 0 / 33.33% 100%,
+    linear-gradient(to bottom, rgba(255,255,255,0.3) 1px, transparent 1px) 0 0 / 100% 33.33%;
+}
+
+/* Calibration Ruler Print Styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  .print\\:p-0 {
+    padding: 0 !important;
+  }
+
+  .print\\:shadow-none {
+    box-shadow: none !important;
+  }
+
+  .print\\:mb-4 {
+    margin-bottom: 1rem !important;
+  }
+
+  .print\\:text-xl {
+    font-size: 1.25rem !important;
+  }
+}
+
+/* Segmentation Overlay Styles */
+.segmentation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.segmentation-mask {
+  mix-blend-mode: multiply;
+}
+
+.wound-contour {
+  fill: none;
+  stroke: #ef4444;
+  stroke-width: 2;
+  stroke-dasharray: 8 4;
+  animation: dash 0.5s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+/* Progress Indicator */
+.progress-bar {
+  @apply h-2 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full bg-astro-500 transition-all duration-300 ease-out;
+}
+
+/* Healing Progress Colors */
+.healing-improving {
+  @apply text-green-600 bg-green-50;
+}
+
+.healing-stable {
+  @apply text-yellow-600 bg-yellow-50;
+}
+
+.healing-worsening {
+  @apply text-red-600 bg-red-50;
+}
+
+/* Quality Indicator Styles */
+.quality-pass {
+  @apply text-green-600;
+}
+
+.quality-fail {
+  @apply text-red-600;
+}
+
+.quality-warning {
+  @apply text-yellow-600;
+}
+
+/* Measurement Grid */
+.measurement-grid {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.measurement-card {
+  @apply bg-gray-50 rounded-lg p-4 text-center;
+}
+
+/* Tooltip */
+.tooltip {
+  @apply absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 rounded;
+  animation: fadeIn 0.15s ease-out;
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  @apply bg-white rounded-2xl shadow-xl;
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Touch-friendly Sizes */
+@media (pointer: coarse) {
+  button,
+  [role="button"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Dark Mode Support (future) */
+@media (prefers-color-scheme: dark) {
+  /* Placeholder for dark mode styles */
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    @apply border-2 border-astro-900;
+  }
+  
+  .input-field {
+    @apply border-2;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Calibration Ruler Styles */
+.ruler-page-height {
+  min-height: 297mm;
+}
+
+.ruler-primary-height {
+  height: 40mm;
+}
+
+.calibration-grid {
+  width: 80mm;
+  height: 80mm;
+}
+
+.circle-25mm {
+  width: 25mm;
+  height: 25mm;
+}
+
+.circle-20mm {
+  width: 20mm;
+  height: 20mm;
+}
+
+.circle-10mm {
+  width: 10mm;
+  height: 10mm;
+}
+
+.l-ruler {
+  width: 100mm;
+  height: 100mm;
+}
+
+.verification-box {
+  width: 10mm;
+  height: 10mm;
+}
