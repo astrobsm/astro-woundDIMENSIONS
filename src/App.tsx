@@ -17,6 +17,7 @@ const CaptureFlow = lazy(() => import('./components/CaptureFlow').then(m => ({ d
 const CalibrationRuler = lazy(() => import('./components/CalibrationRuler').then(m => ({ default: m.CalibrationRuler })));
 const ReportModulePage = lazy(() => import('./components/ReportModulePage').then(m => ({ default: m.default })));
 const Settings = lazy(() => import('./components/Settings').then(m => ({ default: m.Settings })));
+const UserGuide = lazy(() => import('./components/UserGuide').then(m => ({ default: m.UserGuide })));
 
 // Loading component
 const LoadingScreen: React.FC<{ message?: string }> = ({ message = 'Loading...' }) => (
@@ -123,6 +124,9 @@ const App: React.FC = () => {
 
           {/* Settings */}
           <Route path="/settings" element={<Settings />} />
+
+          {/* User Guide */}
+          <Route path="/guide" element={<UserGuide />} />
 
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />
