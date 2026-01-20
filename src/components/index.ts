@@ -15,3 +15,4 @@ export { ReportModule } from './ReportModule';
 export { default as ReportModulePage } from './ReportModulePage';
 export { Settings } from './Settings';
 export { UserGuide } from './UserGuide';
+export { default as Watermark } from './Watermark';

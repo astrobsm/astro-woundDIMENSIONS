@@ -18,6 +18,7 @@ const CalibrationRuler = lazy(() => import('./components/CalibrationRuler').then
 const ReportModulePage = lazy(() => import('./components/ReportModulePage').then(m => ({ default: m.default })));
 const Settings = lazy(() => import('./components/Settings').then(m => ({ default: m.Settings })));
 const UserGuide = lazy(() => import('./components/UserGuide').then(m => ({ default: m.UserGuide })));
+import Watermark from './components/Watermark';
 
 // Loading component
 const LoadingScreen: React.FC<{ message?: string }> = ({ message = 'Loading...' }) => (
@@ -100,6 +101,7 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary>
+      <Watermark />
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           {/* Dashboard */}
