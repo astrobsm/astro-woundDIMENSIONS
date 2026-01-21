@@ -220,7 +220,7 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
           <button
             onClick={() => navigate('/patients/new')}
             className="bg-astro-500 hover:bg-astro-600 text-white rounded-xl p-4 flex items-center gap-3 transition-colors"
@@ -246,11 +246,19 @@ export const Dashboard: React.FC = () => {
           </Link>
 
           <Link
-            to="/reports"
+            to="/guide"
+            className="bg-green-500 hover:bg-green-600 text-white rounded-xl p-4 flex items-center gap-3 transition-colors"
+          >
+            <HelpCircle className="w-6 h-6" />
+            <span className="font-medium">Help & Guide</span>
+          </Link>
+
+          <Link
+            to="/settings"
             className="bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 rounded-xl p-4 flex items-center gap-3 transition-colors"
           >
-            <FileText className="w-6 h-6" />
-            <span className="font-medium">Reports</span>
+            <Settings className="w-6 h-6" />
+            <span className="font-medium">Settings</span>
           </Link>
         </div>
 
